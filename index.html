@@ -291,6 +291,7 @@
 
         async function fetchData() {
             const serverUrl = await fetchServerUrl();
+            alert(serverUrl);
             if (!serverUrl) return;
 
             const cachedData = localStorage.getItem("apiData");
@@ -305,7 +306,7 @@
             } else {
                 showLoadingScreen();
                 try {
-                    const response = await fetch(`${serverUrl}/api/PublicService/GetHomeData?changeGuild='0'`);
+                    const response = await fetch(`${serverUrl}/api/PublicService/GetHomeData?changeGuild=0`);
                     console.log(response);
                     if (!response.ok) {
                         throw new Error("Network response was not ok");
