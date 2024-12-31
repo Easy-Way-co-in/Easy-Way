@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
     <title>Easy Way - Professional On-Demand Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -314,10 +314,11 @@
                 // Try JSONP approach
                 await $.ajax({
                     url: `${serverUrl}/api/PublicService/GetHomeData`,
+                    //url: `https://api.restful-api.dev/objects`,
                     method: "GET",
-                    data: { changeGuild: '0' },
-                    dataType: "jsonp",
-                    jsonp: "callback",
+                    //data: { changeGuild: '0' },
+                    //dataType: "jsonp",
+                    //jsonp: "callback",
                     timeout: 5000,
                     success: function (data) {
                         console.log("Data received:", data);
@@ -327,36 +328,17 @@
                     },
                     error: function (xhr, status, error) {
                         // If JSONP fails, try alternative approach
-                        fallbackFetch(serverUrl);
+                        //fallbackFetch(serverUrl);
                     }
                 });
 
             } catch (error) {
                 console.error("Error in fetchData:", error);
                 // Try fallback if main request fails
-                fallbackFetch(serverUrl);
+                //fallbackFetch(serverUrl);
             } finally {
                 hideLoadingScreen();
             }
-        }
-
-        function fallbackFetch(serverUrl) {
-            // Try alternative approach using script injection
-            const script = document.createElement('script');
-            script.src = `${serverUrl}/api/PublicService/GetHomeData?changeGuild=0&callback=handleResponse`;
-            document.body.appendChild(script);
-
-            // Clean up script tag after execution
-            script.onload = function () {
-                document.body.removeChild(script);
-            };
-
-            // Handle error case
-            script.onerror = function () {
-                console.error("Failed to load data via script tag");
-                hideLoadingScreen();
-                alert("Unable to fetch data. Please try again later.");
-            };
         }
 
         // Global callback function for JSONP
