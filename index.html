@@ -262,78 +262,127 @@
 
     <script>
         $(document).ready(function () {
-            // Call the function to fetch data
             fetchData();
         });
 
         function showLoadingScreen() {
-            document.getElementById("loadingScreen").classList.remove("hidden");
+            $("#loadingScreen").removeClass("hidden");
         }
 
         function hideLoadingScreen() {
-            document.getElementById("loadingScreen").classList.add("hidden");
+            $("#loadingScreen").addClass("hidden");
         }
 
         async function fetchServerUrl() {
             try {
-                const response = await fetch("img/server.json");
-                if (!response.ok) {
-                    throw new Error("Failed to fetch server.json");
-                }
-                const data = await response.json();
-                return data.Server; // Assumes "Server" key contains the base URL
+                const response = await $.ajax({
+                    url: "img/server.json",
+                    method: "GET",
+                    dataType: "json"
+                });
+                console.log("Server configuration:", response);
+                return response.Server.trim();
             } catch (error) {
-                console.error("Error fetching server URL:", error);
-                alert("Unable to fetch server information. Please try again later.");
+                console.error("Server URL fetch error:", error);
                 return null;
             }
         }
 
         async function fetchData() {
-            const serverUrl = await fetchServerUrl();
-            alert(serverUrl);
-            if (!serverUrl) return;
+            try {
+                const serverUrl = await fetchServerUrl();
+                console.log("Server URL:", serverUrl);
 
-            const cachedData = localStorage.getItem("apiData");
-            const cacheTime = localStorage.getItem("cacheTime");
-
-            const now = Date.now();
-            const expiryTime = 1000 * 60 * 60; // 1 hour
-
-            if (cachedData && cacheTime && now - cacheTime < expiryTime) {
-                console.log("Using cached data:", JSON.parse(cachedData));
-                processData(JSON.parse(cachedData));
-            } else {
-                showLoadingScreen();
-                try {
-                    const response = await fetch(`${serverUrl}/api/PublicService/GetHomeData?changeGuild=0`);
-                    console.log(response);
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    const data = await response.json();
-                    localStorage.setItem("apiData", JSON.stringify(data));
-                    localStorage.setItem("cacheTime", Date.now());
-                    console.log("Fetched new data and cached it:", data);
-                    processData(data);
-                } catch (error) {
-                    alert("Failed to fetch data. Please try again later.");
-                    console.error("Fetching error:", error);
-                } finally {
-                    hideLoadingScreen();
+                if (!serverUrl) {
+                    throw new Error("No server URL available");
                 }
+
+                // Check cache first
+                const cachedData = localStorage.getItem("apiData");
+                const cacheTime = localStorage.getItem("cacheTime");
+                const now = Date.now();
+                const expiryTime = 1000 * 60 * 60; // 1 hour
+
+                if (cachedData && cacheTime && now - Number(cacheTime) < expiryTime) {
+                    console.log("Using cached data");
+                    processData(JSON.parse(cachedData));
+                    return;
+                }
+
+                showLoadingScreen();
+
+                // Try JSONP approach
+                await $.ajax({
+                    url: `${serverUrl}/api/PublicService/GetHomeData`,
+                    method: "GET",
+                    data: { changeGuild: '0' },
+                    dataType: "jsonp",
+                    jsonp: "callback",
+                    timeout: 5000,
+                    success: function (data) {
+                        console.log("Data received:", data);
+                        localStorage.setItem("apiData", JSON.stringify(data));
+                        localStorage.setItem("cacheTime", String(now));
+                        processData(data);
+                    },
+                    error: function (xhr, status, error) {
+                        // If JSONP fails, try alternative approach
+                        fallbackFetch(serverUrl);
+                    }
+                });
+
+            } catch (error) {
+                console.error("Error in fetchData:", error);
+                // Try fallback if main request fails
+                fallbackFetch(serverUrl);
+            } finally {
+                hideLoadingScreen();
             }
         }
 
-        function processData(data) {
-            console.log("Processing data:", data);
+        function fallbackFetch(serverUrl) {
+            // Try alternative approach using script injection
+            const script = document.createElement('script');
+            script.src = `${serverUrl}/api/PublicService/GetHomeData?changeGuild=0&callback=handleResponse`;
+            document.body.appendChild(script);
+
+            // Clean up script tag after execution
+            script.onload = function () {
+                document.body.removeChild(script);
+            };
+
+            // Handle error case
+            script.onerror = function () {
+                console.error("Failed to load data via script tag");
+                hideLoadingScreen();
+                alert("Unable to fetch data. Please try again later.");
+            };
         }
 
-        // Call fetchData to initialize
-        //fetchData();
+        // Global callback function for JSONP
+        window.handleResponse = function (data) {
+            try {
+                console.log("Received data via JSONP:", data);
+                localStorage.setItem("apiData", JSON.stringify(data));
+                localStorage.setItem("cacheTime", String(Date.now()));
+                processData(data);
+            } catch (error) {
+                console.error("Error handling JSONP response:", error);
+                alert("Error processing data");
+            } finally {
+                hideLoadingScreen();
+            }
+        };
 
-
-
+        function processData(data) {
+            try {
+                console.log("Processing data:", data);
+                // Add your data processing logic here
+            } catch (error) {
+                console.error("Error processing data:", error);
+                alert("Error processing data");
+            }
+        }
     </script>
 </body>
 
