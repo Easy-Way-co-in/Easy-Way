@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src * 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src * data: blob:;">-->
+    <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
+    
     <title>Easy Way - Professional On-Demand Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -24,14 +26,14 @@
                 <span class="flex items-center hover:text-blue-200 transition">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     <a href="tel:1234567890">7838203665</a>
                 </span>
                 <span class="hidden lg:flex items-center hover:text-blue-200 transition">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     <a href="mailto:contact@servicepro.com">contact@servicepro.com</a>
                 </span>
@@ -54,8 +56,7 @@
                     <a href="#" class="text-gray-700 hover:text-blue-900 font-medium transition">Contact</a>
                 </div>
                 <div class="flex space-x-4">
-                    <button
-                        class="hidden lg:block bg-white border-2 border-blue-600 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-50 transition">
+                    <button class="hidden lg:block bg-white border-2 border-blue-600 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-50 transition">
                         Contact Us
                     </button>
                     <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
@@ -71,8 +72,7 @@
         <div class="absolute inset-0 bg-blue-500 opacity-10 transform rotate-12 scale-150"></div>
         <div class="container mx-auto px-6 relative">
             <div class="max-w-4xl mx-auto text-center">
-                <span
-                    class="inline-block bg-blue-500 bg-opacity-20 text-blue-100 px-4 py-1 rounded-full text-sm font-medium mb-6">
+                <span class="inline-block bg-blue-500 bg-opacity-20 text-blue-100 px-4 py-1 rounded-full text-sm font-medium mb-6">
                     Trusted by 100,000+ Customers
                 </span>
                 <h1 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -84,25 +84,22 @@
                     guarantee.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-                    <button
-                        class="bg-white text-blue-900 px-8 py-4 rounded-lg hover:bg-blue-50 transition font-semibold">
+                    <button class="bg-white text-blue-900 px-8 py-4 rounded-lg hover:bg-blue-50 transition font-semibold">
                         Get Started
                         <svg class="w-5 h-5 ml-2 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
-                    <button
-                        class="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition font-semibold">
+                    <button class="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition font-semibold">
                         View Services
                     </button>
                 </div>
                 <!-- App Store Links -->
                 <div class="flex justify-center gap-4 mb-8">
                     <a href="https://play.google.com/store/apps/details?id=com.servicepro" target="_blank"
-                        class="flex items-center bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition">
+                       class="flex items-center bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition">
                         <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
                         </svg>
                         Get it on &nbsp; <br />
                         <span class="font-semibold"> Google Play Store</span>
@@ -119,8 +116,7 @@
                     <div>
                         <div class="flex items-center mb-1">
                             <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                             <span class="ml-1 font-medium">4.9/5</span>
                         </div>
@@ -137,9 +133,10 @@
             <h2 class="text-3xl font-bold text-gray-900 mb-6">Find the Service You Need</h2>
             <div class="relative max-w-xl mx-auto">
                 <input type="text" placeholder="Search for services..."
-                    class="w-full px-6 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <button
-                    class="absolute top-0 right-0 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-200">Search</button>
+                       class="w-full px-6 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button class="absolute top-0 right-0 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-200">
+                    Search
+                </button>
             </div>
         </div>
     </div>
@@ -149,28 +146,32 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Top Services</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Explore the most sought-after services offered by our
-                    professional providers.</p>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Explore the most sought-after services offered by our
+                    professional providers.
+                </p>
             </div>
             <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition duration-200">
                     <div class="h-48 bg-blue-50 flex items-center justify-center">
                         <svg class="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                         </svg>
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-semibold mb-2 text-gray-900">Home Cleaning</h3>
-                        <p class="text-gray-600 text-sm mb-4">Professional cleaning services for homes and offices,
-                            tailored to your needs.</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Professional cleaning services for homes and offices,
+                            tailored to your needs.
+                        </p>
                         <a href="#" class="text-blue-600 font-medium text-sm flex items-center group">
                             Learn More
                             <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition duration-200"
-                                fill="currentColor" viewBox="0 0 20 20">
+                                 fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
-                                    d="M5.293 9.707a1 1 0 011.414 0L10 13.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
+                                      d="M5.293 9.707a1 1 0 011.414 0L10 13.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                      clip-rule="evenodd" />
                             </svg>
                         </a>
                     </div>
@@ -183,15 +184,17 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-semibold mb-2 text-gray-900">Plumbing Services</h3>
-                        <p class="text-gray-600 text-sm mb-4">Expert plumbing solutions to handle leaks, installations,
-                            and maintenance.</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Expert plumbing solutions to handle leaks, installations,
+                            and maintenance.
+                        </p>
                         <a href="#" class="text-blue-600 font-medium text-sm flex items-center group">
                             Learn More
                             <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition duration-200"
-                                fill="currentColor" viewBox="0 0 20 20">
+                                 fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
-                                    d="M5.293 9.707a1 1 0 011.414 0L10 13.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
+                                      d="M5.293 9.707a1 1 0 011.414 0L10 13.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                      clip-rule="evenodd" />
                             </svg>
                         </a>
                     </div>
@@ -200,20 +203,22 @@
                     <div class="h-48 bg-blue-50 flex items-center justify-center">
                         <svg class="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12h6m-3-3v6m8-9a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  d="M9 12h6m-3-3v6m8-9a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-semibold mb-2 text-gray-900">Electrical Repairs</h3>
-                        <p class="text-gray-600 text-sm mb-4">Skilled electricians to ensure safe and efficient repairs
-                            and installations.</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Skilled electricians to ensure safe and efficient repairs
+                            and installations.
+                        </p>
                         <a href="#" class="text-blue-600 font-medium text-sm flex items-center group">
                             Learn More
                             <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition duration-200"
-                                fill="currentColor" viewBox="0 0 20 20">
+                                 fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
-                                    d="M5.293 9.707a1 1 0 011.414 0L10 13.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
+                                      d="M5.293 9.707a1 1 0 011.414 0L10 13.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                      clip-rule="evenodd" />
                             </svg>
                         </a>
                     </div>
@@ -228,8 +233,10 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div>
                     <h4 class="text-lg font-bold mb-4 text-white">About Us</h4>
-                    <p class="text-sm">Easy Way connects you with trusted professionals for a variety of on-demand
-                        services. Available 24/7, we are dedicated to providing exceptional experiences.</p>
+                    <p class="text-sm">
+                        Easy Way connects you with trusted professionals for a variety of on-demand
+                        services. Available 24/7, we are dedicated to providing exceptional experiences.
+                    </p>
                 </div>
                 <div>
                     <h4 class="text-lg font-bold mb-4 text-white">Quick Links</h4>
@@ -254,118 +261,34 @@
     </footer>
 
     <div id="loadingScreen"
-        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white text-lg">
+         class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white text-lg">
         Loading, please wait...
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <script>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" ></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
         $(document).ready(function () {
-            fetchData();
+            //call the ajax first
+            $.ajax({
+                type: 'GET',
+                url: 'http://spa.runasp.net/api/PublicService/GetHomeData?changeGuild=a',
+                dataType: "text",
+                async: false,//wait till the data is received from the server
+                success: function (data) {
+
+                    console.log(data);
+
+                }
+            });
+
         });
 
-        function showLoadingScreen() {
-            $("#loadingScreen").removeClass("hidden");
-        }
-
-        function hideLoadingScreen() {
-            $("#loadingScreen").addClass("hidden");
-        }
-
-        async function fetchServerUrl() {
-            try {
-                const response = await $.ajax({
-                    url: "img/server.json",
-                    method: "GET",
-                    dataType: "json"
-                });
-                console.log("Server configuration:", response);
-                return response.Server.trim();
-            } catch (error) {
-                console.error("Server URL fetch error:", error);
-                return null;
-            }
-        }
-
-        async function fetchData() {
-            try {
-                const serverUrl = await fetchServerUrl();
-                console.log("Server URL:", serverUrl);
-
-                if (!serverUrl) {
-                    throw new Error("No server URL available");
-                }
-
-                // Check cache first
-                const cachedData = localStorage.getItem("apiData");
-                const cacheTime = localStorage.getItem("cacheTime");
-                const now = Date.now();
-                const expiryTime = 1000 * 60 * 60; // 1 hour
-
-                if (cachedData && cacheTime && now - Number(cacheTime) < expiryTime) {
-                    console.log("Using cached data");
-                    processData(JSON.parse(cachedData));
-                    return;
-                }
-
-                showLoadingScreen();
-
-                // Try JSONP approach
-                await $.ajax({
-                    url: `${serverUrl}/api/PublicService/GetHomeData`,
-                    //url: `https://api.restful-api.dev/objects`,
-                    method: "GET",
-                    data: { changeGuild: '0' },
-                    //dataType: "jsonp",
-                    //jsonp: "callback",
-                    timeout: 5000,
-                    success: function (data) {
-                        console.log("Data received:", data);
-                        localStorage.setItem("apiData", JSON.stringify(data));
-                        localStorage.setItem("cacheTime", String(now));
-                        processData(data);
-                    },
-                    error: function (xhr, status, error) {
-                        // If JSONP fails, try alternative approach
-                        //fallbackFetch(serverUrl);
-                    }
-                });
-
-            } catch (error) {
-                console.error("Error in fetchData:", error);
-                // Try fallback if main request fails
-                //fallbackFetch(serverUrl);
-            } finally {
-                hideLoadingScreen();
-            }
-        }
-
-        // Global callback function for JSONP
-        window.handleResponse = function (data) {
-            try {
-                console.log("Received data via JSONP:", data);
-                localStorage.setItem("apiData", JSON.stringify(data));
-                localStorage.setItem("cacheTime", String(Date.now()));
-                processData(data);
-            } catch (error) {
-                console.error("Error handling JSONP response:", error);
-                alert("Error processing data");
-            } finally {
-                hideLoadingScreen();
-            }
-        };
-
-        function processData(data) {
-            try {
-                console.log("Processing data:", data);
-                // Add your data processing logic here
-            } catch (error) {
-                console.error("Error processing data:", error);
-                alert("Error processing data");
-            }
-        }
     </script>
+
 </body>
 
 </html>
