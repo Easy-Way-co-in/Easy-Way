@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<meta http-equiv="Content-Security-Policy" content="default-src * 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src * data: blob:;">-->
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
 
     <title>Easy Way - Professional On-Demand Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -271,20 +271,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
 
-        $(document).ready(function () {
-            //call the ajax first
-            $.ajax({
-                type: 'GET',
-                url: 'http://spa.runasp.net/api/PublicService/GetHomeData?changeGuild=a/',
-                dataType: "text",
-                async: false,//wait till the data is received from the server
-                success: function (data) {
-
+        document.addEventListener("DOMContentLoaded", function () {
+            // Use fetch to make the API request
+            fetch('http://spa.runasp.net/api/PublicService/GetHomeData?changeGuild=a')
+                .then(response => response.text())  // parse the response as text
+                .then(data => {
                     console.log(data);
-
-                }
-            });
-
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
         });
 
     </script>
